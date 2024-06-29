@@ -1,4 +1,5 @@
 const Booking = require('../models/Booking');
+const User = require('../models/User');
 
 const getBookings = async(req, res) => {
     try {
@@ -20,7 +21,7 @@ const getBookingsById = async(req, res) => {
         res.status(500).json({error: error.message});
 
     }
-};
+};                  
 
 const createBooking = async(req, res) => {
     const {fullName, bookingDate, time, people, phoneNumber, comments} = req.body;
@@ -74,10 +75,12 @@ const deleteBookingById = async (req, res) => {
     }
 };
 
+
+
 module.exports = {
     getBookings,
     getBookingsById,
     createBooking,
     updateBookingById,
     deleteBookingById
-}
+};

@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+
 //para inicializar los roles una vez se inicie la app
 const {createRoles} = require('./helpers/initialSetupRoles');
 
@@ -12,7 +14,9 @@ createRoles(); //llamamos a la funcion para crear los usuarios
 dotenv.config();
 const port = process.env.PORT || 3000;
 
+app.use(cookieParser());
 app.use(bodyParser.json());
+
 
 const mongoURI = 'mongodb+srv://dennishefziba20:trfLx01Y0PSEnx0B@bookings.2cuebpg.mongodb.net/';
 
@@ -32,4 +36,4 @@ app.use('/api/auth', routeAuths);
 
 app.listen(port, () => {
     console.log('App running on port '+port);
-})
+});

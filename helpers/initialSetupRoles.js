@@ -1,3 +1,4 @@
+//se inicializa en el app.js
 const Role = require('../models/Role');
 
 const createRoles = async () => {
