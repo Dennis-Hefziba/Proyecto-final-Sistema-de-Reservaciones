@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
 export const signup = async (userData) => {
     const response = await fetch(`${API_URL}/auth/signup`, {

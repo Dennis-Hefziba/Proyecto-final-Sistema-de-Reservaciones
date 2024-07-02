@@ -6,9 +6,13 @@ const Bookings = () => {
 
     useEffect(() => {
         const fetchBookings = async () => {
-            const token = document.cookie.split('=')[1]; // Assumes cookie is in the format "token=..."
-            const bookings = await getBookings(token);
-            setBookings(bookings);
+            try {
+                const token = document.cookie.split('=')[1]; // Assumes cookie is in the format "token=..."
+                const bookingsData = await getBookings(token);
+                setBookings(bookingsData);
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+            }
         };
         fetchBookings();
     }, []);
@@ -18,7 +22,9 @@ const Bookings = () => {
             <h1>Bookings</h1>
             <ul>
                 {bookings.map((booking) => (
-                    <li key={booking._id}>{booking.fullName} - {booking.bookingDate}</li>
+                    <li key={booking._id}>
+                        {booking.fullName} - {booking.bookingDate}
+                    </li>
                 ))}
             </ul>
         </div>

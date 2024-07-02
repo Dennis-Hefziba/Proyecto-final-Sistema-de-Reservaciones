@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Bookings from './components/Bookings';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -8,11 +8,11 @@ const App = () => {
     return (
         <Router>
             <div>
-                <Switch>
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/" component={Bookings} />
-                </Switch>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/" element={<Bookings />} />
+                </Routes>
             </div>
         </Router>
     );
